@@ -20,8 +20,9 @@ public class Lesson2 {
             userNameField.sendKeys("testuser@testuser.com");
             passwordField.sendKeys("TUewq99!g@");
             createAccountBttn.click();
-            WebElement element = driver.findElement(By.cssSelector(".pa-uiLib-authentication-banner-header"));
-            if (element.isDisplayed()){
+            WebElement errorContainer = driver.findElement(By.cssSelector(".pa-uiLib-authentication-formTitle + div[class*='error']"));
+            //WebElement element = driver.findElement(By.cssSelector(".pa-uiLib-authentication-banner-header"));
+            if (errorContainer.isDisplayed()){
                 System.out.println("User has not been registered!");
             } else {
                 System.out.println("User has been registered!");
