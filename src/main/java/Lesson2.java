@@ -21,7 +21,7 @@ public class Lesson2 {
             passwordField.sendKeys("TUewq99!g@");
             createAccountBttn.click();
             WebElement errorContainer = driver.findElement(By.cssSelector(".pa-uiLib-authentication-formTitle + div[class*='error']"));
-            //WebElement element = driver.findElement(By.cssSelector(".pa-uiLib-authentication-banner-header"));
+//WebElement element = driver.findElement(By.cssSelector(".pa-uiLib-authentication-banner-header"));
             if (errorContainer.isDisplayed()){
                 System.out.println("User has not been registered!");
             } else {

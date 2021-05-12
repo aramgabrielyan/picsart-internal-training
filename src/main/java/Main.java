@@ -13,12 +13,12 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver");
         WebDriver driver = new ChromeDriver();
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://picsartstage2.com/");
         WebElement loginButton = driver.findElement(By.cssSelector("[data-test='headerAuth-signInBtn pa-uiLib-headerAuth-authBtn']"));
         loginButton.click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By.name("username"))));
-        //Thread.sleep(1000);
+//Thread.sleep(1000);
         WebElement usernameField = driver.findElement(By.name("username"));
         usernameField.sendKeys("smart_offer");
 
