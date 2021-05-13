@@ -12,6 +12,7 @@ public class LoginPage {
     private By loginButtonLocation = By.cssSelector("[data-test='headerAuth-signInBtn pa-uiLib-headerAuth-authBtn']");
     private By signInButtonLocation = By.cssSelector("[class*='pa-uiLib-authentication-btn primary']");
     private By avatarLocation = By.className("pa-uiLib-headerProfileInfo-avatarBlock");
+    private final By loginPopUp = By.cssSelector("[class|='modal']");
 
     public LoginPage (WebDriver driver) {
         this.driver = driver;
@@ -46,6 +47,10 @@ public class LoginPage {
     public boolean isUserLoggedIn(){
         WebElement avatarIcon = new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(avatarLocation));
         return avatarIcon.isDisplayed();
+    }
+
+    public boolean isSuccess(){
+        return driver.findElement(loginPopUp).isDisplayed();
     }
 
 
