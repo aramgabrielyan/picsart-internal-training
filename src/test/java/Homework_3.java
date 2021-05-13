@@ -29,6 +29,6 @@ public class Homework_3 {
         loginPage.typeUsername("fakelogin");
         loginPage.typePassword("fakepassword");
         loginPage.clickSignInButton();
-        assertTrue(loginPage.isSuccess(), "User is logged in");
+        assertTrue(loginPage.isPopUpDisplayed(), "User is logged in");
     }
 }

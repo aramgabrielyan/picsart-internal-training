@@ -39,7 +39,7 @@ public class LoginPage {
         signInButton.click();
     }
 
-    public boolean isSuccess(){
+    public boolean isPopUpDisplayed(){
         return driver.findElement(loginPopUp).isDisplayed();
     }
 
