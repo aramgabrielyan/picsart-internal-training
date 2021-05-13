@@ -44,7 +44,7 @@ public class LoginPage {
     }
 
     public boolean isUserLoggedIn(){
-        WebElement avatarIcon = new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(avatarLocation));
+        WebElement avatarIcon = new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(avatarLocation));
         return avatarIcon.isDisplayed();
     }
 
