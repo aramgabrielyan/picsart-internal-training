@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     private final By avatarLocation = By.className("pa-uiLib-headerProfileInfo-avatarBlock");
 
     public LoginPage() {
-        open("https://picsartstage2.com/");
+        open("https://picsart.com/");
     }
 
     public void clickLoginButton(){
