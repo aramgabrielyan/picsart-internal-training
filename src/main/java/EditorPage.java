@@ -7,7 +7,7 @@ public class EditorPage extends BasePage{
     private final By firstSliderLocation = By.cssSelector("[alt='template-5ebbf1aa1deff9572ef442cc']");
     private final By stickerIconLocation = By.id("stickers-category");
     private final By myStickersLocation = By.className("pa-uiLib_sidebar--actions__button");
-    private final By instaStoryLocation = By.cssSelector("[data-test='insta-story'] p");
+    private final By instaStoryLocation = By.cssSelector("[data-test='insta-story']");
 
     public void clickInstaStory(){
         click(instaStoryLocation);
@@ -26,6 +26,10 @@ public class EditorPage extends BasePage{
 
     public void clickMySticker(){
         click(myStickersLocation);
+    }
+
+    public boolean isMyStickersDisplayed() {
+        return isDisplayed(myStickersLocation);
     }
 
     @Override
