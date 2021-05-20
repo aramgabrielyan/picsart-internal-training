@@ -1,7 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,11 +13,6 @@ public abstract class BasePage {
 
     public BasePage() {
         this.driver = getDriver();
-    }
-
-    public List<WebElement> findAll(By location) {
-        System.out.println("Finding elements -> " + location.toString());
-        return driver.findElements(location);
     }
 
     public void changeTab(int tabIndex) {
@@ -36,6 +30,11 @@ public abstract class BasePage {
     public WebElement find(By location) {
         System.out.println("Finding element ->" + location.toString());
         return driver.findElement(location);
+    }
+
+    public List<WebElement> findAll(By location) {
+        System.out.println("Finding elements -> " + location.toString());
+        return driver.findElements(location);
     }
 
     public void type(By location, String text) {
