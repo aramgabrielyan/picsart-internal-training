@@ -1,28 +1,16 @@
 import org.openqa.selenium.Cookie;
 import org.testng.annotations.*;
+import pageobjects.EditorPage;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static setup.DriverSetup.getDriver;
 
-public class EditorPageOpenTest {
+public class InstaStoryTest extends TestBase {
 
-    @BeforeMethod
-    public void setup() {
-        LoginPage loginPage = new LoginPage();
-        Cookie cookie = new Cookie("user_key", "a524635b-49f3-401d-8fe0-cd982a456ea8");
-        getDriver().manage().addCookie(cookie);
-        getDriver().navigate().refresh();
-        assertTrue(loginPage.isUserLoggedIn(), "User is logged in");
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        getDriver().quit();
-    }
 
     @Test
-    public void EditorOpenTest() {
+    public void InstaStoryTest() {
         Cookie cookie1 = new Cookie("we-editor-first-open", "true");
         getDriver().manage().addCookie(cookie1);
         getDriver().navigate().refresh();

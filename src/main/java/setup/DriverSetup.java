@@ -8,7 +8,7 @@ public class DriverSetup {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "/Users/aramgabrielyan/IdeaProjects/picsart-internal-training/src/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
             driver = new ChromeDriver();
         }
         return driver;

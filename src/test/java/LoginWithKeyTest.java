@@ -1,7 +1,9 @@
 import org.openqa.selenium.Cookie;
 import org.testng.annotations.*;
+import pageobjects.LoginPage;
 
 import static org.testng.Assert.assertTrue;
+import static setup.DriverSetup.driver;
 import static setup.DriverSetup.getDriver;
 
 public class LoginWithKeyTest {
@@ -17,7 +19,7 @@ public class LoginWithKeyTest {
 
     @Test
     public void loginWithKeyTest() {
-        LoginPage loginPage = new LoginPage();
+        LoginPage loginPage = new LoginPage(driver);
         Cookie cookie = new Cookie("user_key", "a524635b-49f3-401d-8fe0-cd982a456ea8");
         getDriver().manage().addCookie(cookie);
         getDriver().navigate().refresh();
