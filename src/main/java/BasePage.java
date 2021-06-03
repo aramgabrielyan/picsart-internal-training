@@ -16,6 +16,11 @@ public abstract class BasePage {
         this.driver = getDriver();
     }
 
+    public WebElement find(By location) {
+        System.out.println("Finding element ->" + location.toString());
+        return driver.findElement(location);
+    }
+
     public List<WebElement> findAll(By location) {
         System.out.println("Finding elements -> " + location.toString());
         return driver.findElements(location);
@@ -31,11 +36,6 @@ public abstract class BasePage {
     public void open(String url) {
         System.out.println("Opening url ->" + url);
         driver.get(url);
-    }
-
-    public WebElement find(By location) {
-        System.out.println("Finding element ->" + location.toString());
-        return driver.findElement(location);
     }
 
     public void type(By location, String text) {
