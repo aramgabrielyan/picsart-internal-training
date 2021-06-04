@@ -21,6 +21,9 @@ public class LoginWithKeyTest {
     public void loginWithKeyTest() {
         LoginPage loginPage = new LoginPage(driver);
         Cookie cookie = new Cookie("user_key", "a524635b-49f3-401d-8fe0-cd982a456ea8");
+        getDriver().manage().addCookie(new Cookie("OptanonAlertBoxClosed", "some_value"));
+        getDriver().manage().addCookie(new Cookie("we-editor-first-open", "true"));
+        getDriver().manage().addCookie(new Cookie("we-editor-photo-first-open", "true"));
         getDriver().manage().addCookie(cookie);
         getDriver().navigate().refresh();
 

@@ -29,26 +29,26 @@ public class UserPage extends BasePage {
     }
 
     @FindBy (css = "[class*='c-dynamic-tooltip'] [data-photo-id='349802346077201']")
-    private By like;
+    private WebElement like;
     @FindBy (css = "figure[class*='c-preview']")
-    private By image;
+    private List<WebElement> image;
 
 
     public void moveToImage() {
-        WaitHelper.getInstance().waitForElementDisplayed(image);
+       // WaitHelper.getInstance().waitForElementDisplayed(image);
         Actions actions = new Actions(driver);
-        List<WebElement> imagesList = findAll(image);
-        actions.moveToElement(imagesList.get(0)).build().perform();
+        //List<WebElement> imagesList = findAll(image);
+        actions.moveToElement(image.get(0)).build().perform();
     }
 
     public boolean isImageLiked() {
-        return find(like).getAttribute("class").contains("active");
+        return like.getAttribute("class").contains("active");
     }
 
     public void moveToLikeButton() {
-        WaitHelper.getInstance().waitForElementDisplayed(like);
+        //WaitHelper.getInstance().waitForElementDisplayed(like);
         Actions actions = new Actions(driver);
-        actions.moveToElement(find(like)).click().build().perform();
+        actions.moveToElement(like).click().build().perform();
     }
 
 }

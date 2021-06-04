@@ -23,6 +23,9 @@ public class TestBase {
         JsonElement response = user.get("response");
         key = user.get("response").getAsJsonObject().get("key").getAsString();
         Cookie cookie = new Cookie("user_key", key);
+        getDriver().manage().addCookie(new Cookie("OptanonAlertBoxClosed", "some_value"));
+        getDriver().manage().addCookie(new Cookie("we-editor-first-open", "true"));
+        getDriver().manage().addCookie(new Cookie("we-editor-photo-first-open", "true"));
         getDriver().manage().addCookie(cookie);
         getDriver().navigate().refresh();
 

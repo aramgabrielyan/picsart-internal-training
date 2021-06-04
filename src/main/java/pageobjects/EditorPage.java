@@ -1,28 +1,31 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 import static setup.DriverSetup.getDriver;
 
 public class EditorPage extends BasePage {
 
     @FindBy(css = "[alt='template-5ebbf1aa1deff9572ef442cc']")
-    private By firstSlider;
+    private WebElement firstSlider;
     @FindBy(css = "stickers-category")
-    private By stickerIcon;
+    private WebElement stickerIcon;
     @FindBy(css = "pa-uiLib_sidebar--actions__button")
-    private By myStickers;
+    private WebElement myStickers;
     @FindBy(css = "[data-test='insta-story'] span")
-    private By instaStory;
+    private WebElement instaStory;
     @FindBy (css = "[class*='customSizeContainer']")
-    private By editorItem;
+    private List<WebElement> editorItem;
     @FindBy(css = "#background-category")
-    private By fitIcon;
+    private WebElement fitIcon;
 
 
     public EditorPage(){
@@ -38,7 +41,7 @@ public class EditorPage extends BasePage {
     public void clickInstaStory() {
         init();
         Actions action = new Actions(driver);
-        action.moveToElement(find(instaStory)).click().build().perform();
+        action.moveToElement(instaStory).click().build().perform();
         new WebDriverWait(driver, 10);
         // changeTab(1);
     }
@@ -46,28 +49,26 @@ public class EditorPage extends BasePage {
     public int getItemsCount() {
         init();
         //helpers.WaitHelper.getInstance().waitForElementDisplayed(editorItemLocation);
-        new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(editorItem));
-        return findAll(editorItem).size();
+        //new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(element));
+        return editorItem.size();
     }
 
     public void clickFitIcon() {
         init();
-        new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(fitIcon));
+        //new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(fitIcon));
         click(fitIcon);
     }
 
     public void clickFirstSlider() {
         init();
         click(firstSlider);
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(stickerIcon));
+       // new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(stickerIcon));
     }
 
     public void clickSticker() {
         init();
         click(stickerIcon);
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(myStickers));
+       // new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(myStickers));
     }
 
     public void clickMySticker() {

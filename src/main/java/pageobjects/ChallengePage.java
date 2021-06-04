@@ -16,33 +16,32 @@ public class ChallengePage extends BasePage {
     WaitHelper waitHelper = new WaitHelper();
 
     @FindBy(css = "[data-test='subNavigation-groupList'] [href='/challenges']")
-    private By challenges;
+    private WebElement challenges;
     @FindBy(css = "[data-test='headerNavigation-navigationListItem-Discover']")
-    private By discover;
+    private List<WebElement> discover;
     @FindBy(css = ".grid-cards .card")
-    private By challengeItems;
+    private List<WebElement> challengeItems;
     @FindBy(css = "[class='c-get-the-app-popup js-prevent-default-event primary-big-btn']")
-    private By participate;
-    @FindBy(css = "qrcode")
-    private By qrCode;
-
-    public ChallengePage() {
-        open(getUrl());
-        PageFactory.initElements(getDriver(), this);
-    }
+    private WebElement participate;
+    @FindBy(id = "qrcode")
+    private WebElement qrCode;
 
     public ChallengePage init() {
+        PageFactory.initElements(getDriver(), this);
+        return this;
+    }
+
+    public ChallengePage open() {
         open(getUrl());
         PageFactory.initElements(getDriver(), this);
         return this;
     }
 
-    public void goToDiscoveryButton() {
+    public void goToDiscoverButton() {
         init();
-        waitHelper.waitForElementDisplayed(discover);
-        List<WebElement> element = getDriver().findElements(discover);
+       // waitHelper.waitForElementDisplayed(discover);
         Actions actions = new Actions(getDriver());
-        actions.moveToElement(element.get(element.size() - 1)).click().build().perform();
+        actions.moveToElement(discover.get(discover.size() - 1)).click().build().perform();
     }
 
     public void challengesClick() {
@@ -53,14 +52,14 @@ public class ChallengePage extends BasePage {
 
     public void selectChallenge() {
         init();
-        WaitHelper.getInstance().waitForElementDisplayed(challengeItems);
-        waitHelper.waitForElementClickable(challengeItems);
-        click(findAll(challengeItems).get(1));
+       // WaitHelper.getInstance().waitForElementDisplayed(challengeItems);
+       // waitHelper.waitForElementClickable(challengeItems);
+        click(challengeItems.get(1));
     }
 
     public void participateClick() {
         init();
-        WaitHelper.getInstance().waitForElementDisplayed(participate);
+       // WaitHelper.getInstance().waitForElementDisplayed(participate);
         click(participate);
     }
 

@@ -13,17 +13,17 @@ import static setup.DriverSetup.getDriver;
 public class LoginPage extends BasePage {
 
     @FindBy (css = "username")
-    private By usernameField;
+    private WebElement usernameField;
     @FindBy (css = "password")
-    private By passwordField;
+    private WebElement passwordField;
     @FindBy (css = "[data-test='headerAuth-signInBtn pa-uiLib-headerAuth-authBtn']")
-    private By loginButton;
+    private WebElement loginButton;
     @FindBy (css = "[class*='pa-uiLib-authentication-btn primary']")
-    private By signInButton;
+    private WebElement signInButton;
     @FindBy (css = "pa-uiLib-headerProfileInfo-avatarBlock")
-    private By avatar;
+    private WebElement avatar;
     @FindBy (css = "[class|='modal']")
-    private By loginPopUp;
+    private WebElement loginPopUp;
 
     public LoginPage(WebDriver driver){
         open("https://picsart.com/");
@@ -39,7 +39,7 @@ public class LoginPage extends BasePage {
     public void clickLoginButton(){
         init();
         click(loginButton);
-        new WebDriverWait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(usernameField));
+        //new WebDriverWait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(usernameField));
     }
 
     public void typeUsername(String username){
@@ -56,11 +56,11 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isUserLoggedIn(){
-        WebElement avatarIcon = new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(avatar));
-        return avatarIcon.isDisplayed();
+        //WebElement avatarIcon = new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(avatar));
+        return avatar.isDisplayed();
     }
     public boolean isPopUpDisplayed(){
-        return driver.findElement(loginPopUp).isDisplayed();
+        return loginPopUp.isDisplayed();
     }
 
     @Override

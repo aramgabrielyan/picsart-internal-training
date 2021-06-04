@@ -3,16 +3,16 @@ import pageobjects.ChallengePage;
 
 import static org.testng.Assert.assertTrue;
 
-public class ChallengesTest extends TestBase {
+public class ChallengesTest  {
 
     @Test
     public void challengesTest() {
-        ChallengePage challengePage = new ChallengePage();
-        challengePage.goToDiscoveryButton();
+        ChallengePage challengePage = new ChallengePage().open();
+        challengePage.goToDiscoverButton();
         challengePage.challengesClick();
         challengePage.selectChallenge();
         challengePage.participateClick();
-        challengePage.qrCodeIsVisible();
+
         assertTrue(challengePage.qrCodeIsVisible(), "QR Code was not appeared");
     }
 }

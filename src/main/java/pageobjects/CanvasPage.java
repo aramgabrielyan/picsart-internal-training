@@ -33,7 +33,7 @@ public class CanvasPage extends BasePage {
     public CanvasPage rightClick() {
         init();
         Actions action = new Actions(getDriver());
-        action.contextClick(canvas).build().perform();
+        action.contextClick(canvas).click().build();
         return this;
     }
 
