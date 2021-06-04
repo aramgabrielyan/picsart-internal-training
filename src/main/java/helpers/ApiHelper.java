@@ -28,6 +28,7 @@ public class ApiHelper {
                 .addHeader("Cookie", "UI=eyJpZCI6MzU5NTYzMzQ4MDM5MTAxLCJrZXkiOiIwNTkxZWQ2YS05NzMwLTQxZmItYTdmNS00YjA0ZWFkZTEwYzMiLCJuYW1lIjoiIiwidXNlcm5hbWUiOiJxYTE2MjE4NjczNDciLCJwaG90byI6Imh0dHBzOi8vY2RuMTkwLnBpY3NhcnQuY29tLzIzMjgwNDY2MTAwNzkwMC5wbmciLCJlbWFpbCI6InFhMTYyMTg2NzM0N0BnbWFpbC5jb20iLCJlbWFpbF9lbmNvZGVkIjoiZmM4NTI0OGNiMzU5ZGVlYTQ3ZjY3NmI1MzgwYWQxYmUyNDI5ZDMxNSIsImlzX2FjdGl2YXRlZCI6ZmFsc2UsImlzX25ldyI6ZmFsc2UsImlzVHJpYWxVc2VkIjpmYWxzZSwiZW1haWxfdmVyaWZpY2F0aW9uX25lZWRlZCI6dHJ1ZX0%3D; badges=j%3A%7B%22VIP%22%3A%22https%3A%2F%2Fcdn130.picsart.com%2F267273314017201.png%22%2C%22Master%20Storyteller%22%3A%22https%3A%2F%2Fpastatic.picsart.com%2Fmasterstoryteller.png%22%2C%22Master%20Contributor%22%3A%22https%3A%2F%2Fpastatic.picsart.com%2Fmastercontributor.png%22%2C%22Celebrity%22%3A%22https%3A%2F%2Fcdn130.picsart.com%2F267273314017201.png%22%2C%22Brands%22%3A%22https%3A%2F%2Fcdn130.picsart.com%2F267273314017201.png%22%2C%22subscribed%22%3A%22https%3A%2F%2Fcdn140.picsart.com%2F270126459015201.png%22%7D; gtm_user_id=359563348039101; sid=s%3A8-c7-bYwaA54axEqkWnXXbCvTGsgF3eo.YGVpDEqnqaLrFHtFLbDD9OyGMBqH7VMlaML2II2Zzqw; user_email=qa1621867347%40gmail.com; user_key=0591ed6a-9730-41fb-a7f5-4b04eade10c3")
                 .build();
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         String jsonString = response.body().string();
         return JsonParser.parseString(jsonString).getAsJsonObject();
     }
@@ -67,6 +68,7 @@ public class ApiHelper {
                 .addHeader("is_public", "1")
                 .build();
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         String jsonString = response.body().string();
         return JsonParser.parseString(jsonString).getAsJsonObject();
 
@@ -83,6 +85,7 @@ public class ApiHelper {
                 .addHeader("Content-Type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         String jsonString = response.body().string();
         return JsonParser.parseString(jsonString).getAsJsonObject();
 

@@ -12,7 +12,7 @@ import static setup.DriverSetup.getDriver;
 
 public abstract class BasePage {
     protected WebDriver driver;
-    public static final String BASE_URL = "https://picsart.com/";
+    public static final String BASE_URL = "https://picsart.com";
 
     public BasePage() {
         this.driver = getDriver();

@@ -15,9 +15,10 @@ public class CanvasPage extends BasePage {
     private WebElement contextMenu;
 
 
-    public CanvasPage() {
+    public CanvasPage open() {
         open(getUrl());
         PageFactory.initElements(getDriver(), this);
+        return this;
     }
 
     public CanvasPage init() {
@@ -33,7 +34,7 @@ public class CanvasPage extends BasePage {
     public CanvasPage rightClick() {
         init();
         Actions action = new Actions(getDriver());
-        action.contextClick(canvas).click().build();
+        action.contextClick(canvas).build().perform();
         return this;
     }
 

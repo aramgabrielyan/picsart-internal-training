@@ -6,9 +6,8 @@ import static org.testng.Assert.assertTrue;
 public class CanvasRightClickTest extends TestBase {
 
     @Test
-    public void CanvasRightClick() throws InterruptedException {
-        CanvasPage canvasPage = new CanvasPage();
-        Thread.sleep(4000);
+    public void CanvasRightClick() {
+        CanvasPage canvasPage = new CanvasPage().open();
         canvasPage.rightClick();
         assertTrue(canvasPage.contextMenuDisplayed(), "Context menu is not opened");
     }
