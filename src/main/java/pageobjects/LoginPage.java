@@ -1,32 +1,31 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static setup.DriverSetup.getDriver;
 
 public class LoginPage extends BasePage {
 
-    @FindBy (css = "username")
+    @FindBy (name = "username")
     private WebElement usernameField;
-    @FindBy (css = "password")
+    @FindBy (name = "password")
     private WebElement passwordField;
-    @FindBy (css = "[data-test='headerAuth-signInBtn pa-uiLib-headerAuth-authBtn']")
+    @FindBy (css = "[data-test*='headerAuth-signInBtn']")
     private WebElement loginButton;
     @FindBy (css = "[class*='pa-uiLib-authentication-btn primary']")
     private WebElement signInButton;
     @FindBy (css = "pa-uiLib-headerProfileInfo-avatarBlock")
     private WebElement avatar;
-    @FindBy (css = "[class|='modal']")
+    @FindBy (css = "[class*='pa-uiLib-modal-modalContent']")
     private WebElement loginPopUp;
 
+    //[class*='pa-uiLib-modal-modalContent']
+
     public LoginPage(WebDriver driver){
-        open("https://picsart.com/");
+        open("https://picsart.com");
         PageFactory.initElements(getDriver(), this);
     }
 
@@ -47,7 +46,7 @@ public class LoginPage extends BasePage {
     }
 
     public void typePassword(String password) {
-        type(usernameField, password);
+        type(passwordField, password);
     }
 
     public void clickSignInButton(){

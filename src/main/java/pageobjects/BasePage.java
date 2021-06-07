@@ -29,9 +29,17 @@ public abstract class BasePage {
     }
 
     public void changeTab(int tabIndex) {
-        List<String> windowHandlers = new ArrayList<>(getDriver().getWindowHandles());
-        getDriver().switchTo().window(windowHandlers.get(tabIndex));
+        List<String> windowHandles = new ArrayList<>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(windowHandles.get(tabIndex));
+
     }
+
+//    public void changeTabNew() {
+//        String windowHandle = driver.getWindowHandle();
+//        ArrayList tabs = new ArrayList(driver.getWindowHandles());
+//        driver.switchTo().window((String) tabs.get(1));
+//    }
+
 
     public abstract String getUrl();
 

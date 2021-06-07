@@ -5,10 +5,9 @@ import org.testng.annotations.Test;
 import pageobjects.UserPage;
 
 import static org.testng.Assert.assertTrue;
-import static setup.DriverSetup.driver;
 import static setup.DriverSetup.getDriver;
 
-public class LikeTest extends TestBase{
+public class LikeTest {
 
     @BeforeTest
     public void setup() {
@@ -35,7 +34,7 @@ public class LikeTest extends TestBase{
         if(!userPage.isImageLiked()){
             userPage.moveToLikeButton();
         }
-        assertTrue(userPage.isImageLiked(), "Error");
+        assertTrue(userPage.isImageLiked(), "Image is not liked");
     }
 }
 

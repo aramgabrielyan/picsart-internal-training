@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static setup.DriverSetup.getDriver;
 
 public class WaitHelper {
@@ -15,16 +17,23 @@ public class WaitHelper {
         return new WaitHelper();
     }
 
-    public WaitHelper waitForElementDisplayed(By location) {
+    public WaitHelper waitForElementDisplayed(WebElement element) {
         try {
-            new WebDriverWait(getDriver(), DEFAULT_TIMEOUT)
-                    .until(ExpectedConditions.visibilityOfElementLocated((location)));
+            new WebDriverWait(getDriver(), DEFAULT_TIMEOUT).until(ExpectedConditions.visibilityOf((element)));
             return this;
         } catch (WebDriverException e) {
-            throw new Error("Element with provided locator was not displayed "
-                    + location.toString());
+            throw new Error("Element with provided locator was not displayed: " + element.toString());
         }
     }
+
+//    public WaitHelper waitForListElementDisplayed(List<WebElement> element) {
+//        try {
+//            new WebDriverWait(getDriver(), DEFAULT_TIMEOUT).until(ExpectedConditions.visibilityOf((WebElement) element));
+//            return this;
+//        } catch (WebDriverException e) {
+//            throw new Error("Element with provided locator was not displayed: " + element.toString());
+//        }
+//    }
 
     public WaitHelper waitForElementInvisible(WebElement element) {
         try {
@@ -32,7 +41,7 @@ public class WaitHelper {
                     .until(ExpectedConditions.invisibilityOf(element));
             return this;
         } catch (WebDriverException e) {
-            throw new Error("Element with provided locator is visible "
+            throw new Error("Element with provided locator is visible: "
                     + element.toString());
         }
     }
@@ -58,9 +67,8 @@ public class WaitHelper {
                     + element.toString());
         }
     }
+
+    public void waitForPageReady() {
+        new WebDriverWait(getDriver(), DEFAULT_TIMEOUT).until((ExpectedConditions.jsReturnsValue("return document.readyState=='complete';")));
+    }
 }
-
-
-//singleton design pattern
-
-//challenges + random challenge + participate = QR code displayed

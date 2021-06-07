@@ -15,7 +15,7 @@ public class UserPage extends BasePage {
 
     @Override
     public String getUrl() {
-        return BasePage.BASE_URL + "u/smart_offer";
+        return BasePage.BASE_URL + "/u/smart_offer";
     }
 
     public UserPage(){

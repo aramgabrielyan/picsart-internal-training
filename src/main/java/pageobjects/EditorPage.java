@@ -1,6 +1,6 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
+import helpers.WaitHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -22,15 +22,16 @@ public class EditorPage extends BasePage {
     private WebElement myStickers;
     @FindBy(css = "[data-test='insta-story'] span")
     private WebElement instaStory;
-    @FindBy (css = "[class*='customSizeContainer']")
+    @FindBy(css = "[class*='customSizeContainer']")
     private List<WebElement> editorItem;
     @FindBy(css = "#background-category")
     private WebElement fitIcon;
 
 
-    public EditorPage(){
-        open(getUrl());
+    public EditorPage open() {
+        open(getUrl() + "/create");
         PageFactory.initElements(getDriver(), this);
+        return this;
     }
 
     public EditorPage init() {
@@ -39,40 +40,40 @@ public class EditorPage extends BasePage {
     }
 
     public void clickInstaStory() {
-        init();
+        //init();
         Actions action = new Actions(driver);
         action.moveToElement(instaStory).click().build().perform();
-        new WebDriverWait(driver, 10);
-        // changeTab(1);
+        new WaitHelper().waitForPageReady();
+        //new WebDriverWait(driver, 10);
+        //changeTab(1);
     }
 
     public int getItemsCount() {
-        init();
-        //helpers.WaitHelper.getInstance().waitForElementDisplayed(editorItemLocation);
-        //new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(element));
+        new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElements(editorItem));
         return editorItem.size();
     }
 
     public void clickFitIcon() {
-        init();
+        //init();
         //new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(fitIcon));
         click(fitIcon);
+        new WaitHelper().waitForPageReady();
     }
 
     public void clickFirstSlider() {
-        init();
+        //init();
         click(firstSlider);
-       // new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(stickerIcon));
+        // new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(stickerIcon));
     }
 
     public void clickSticker() {
-        init();
+        //init();
         click(stickerIcon);
-       // new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(myStickers));
+        // new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(myStickers));
     }
 
     public void clickMySticker() {
-        init();
+        //init();
         click(myStickers);
     }
 
