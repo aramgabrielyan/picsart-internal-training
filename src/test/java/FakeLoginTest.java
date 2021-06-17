@@ -2,9 +2,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.LoginPage;
+import setup.DriverHelper;
 
 import static org.testng.Assert.assertTrue;
-import static setup.DriverSetup.driver;
+
 
 public class FakeLoginTest {
 
@@ -14,12 +15,11 @@ public class FakeLoginTest {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
     }
 
     @Test
     public void falseLoginTest(){
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.clickLoginButton();
         loginPage.typeUsername("fakelogin");
         loginPage.typePassword("fakepassword");

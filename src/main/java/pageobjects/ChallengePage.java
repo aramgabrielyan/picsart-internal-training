@@ -1,17 +1,17 @@
 package pageobjects;
 
 import helpers.WaitHelper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import setup.DriverHelper;
 
 import java.util.List;
 
-import static setup.DriverSetup.getDriver;
 
-public class ChallengePage extends BasePage {
+
+public class ChallengePage extends BasePage<ChallengePage> {
 
     WaitHelper waitHelper = new WaitHelper();
 
@@ -27,20 +27,20 @@ public class ChallengePage extends BasePage {
     private WebElement qrCode;
 
     public ChallengePage init() {
-        PageFactory.initElements(getDriver(), this);
+        PageFactory.initElements(DriverHelper.get().getDriver(), this);
         return this;
     }
 
     public ChallengePage open() {
-        open(getUrl());
-        PageFactory.initElements(getDriver(), this);
+        open();
+        PageFactory.initElements(DriverHelper.get().getDriver(), this);
         return this;
     }
 
     public void goToDiscoverButton() {
         init();
        // waitHelper.waitForElementDisplayed(discover);
-        Actions actions = new Actions(getDriver());
+        Actions actions = new Actions(DriverHelper.get().getDriver());
         actions.moveToElement(discover.get(discover.size() - 1)).click().build().perform();
     }
 
@@ -72,4 +72,13 @@ public class ChallengePage extends BasePage {
         return BasePage.BASE_URL;
     }
 
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
 }

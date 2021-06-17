@@ -1,13 +1,15 @@
 package pageobjects;
 
+import helpers.WaitHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import static setup.DriverSetup.getDriver;
+import setup.DriverHelper;
 
-public class CanvasPage extends BasePage {
+
+public class CanvasPage extends BasePage<CanvasPage> {
+
     @FindBy(css = "[data-test='canvas-container'] .konvajs-content")
     private WebElement canvas;
 
@@ -16,30 +18,33 @@ public class CanvasPage extends BasePage {
 
 
     public CanvasPage open() {
-        open(getUrl());
-        PageFactory.initElements(getDriver(), this);
-        return this;
+        return openPage();
+
     }
 
     public CanvasPage init() {
-        PageFactory.initElements(getDriver(), this);
-        return this;
+        return initPage();
     }
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/create/editor?templateSize=insta_story";
+        return "/create/editor?templateSize=insta_story";
     }
 
     public CanvasPage rightClick() {
-        init();
-        Actions action = new Actions(getDriver());
+     //   init();
+        Actions action = new Actions(DriverHelper.get().getDriver());
         action.contextClick(canvas).build().perform();
         return this;
     }
 
     public boolean contextMenuDisplayed() {
         return isDisplayed(contextMenu);
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        WaitHelper.getWait().waitForElementDisplayed(canvas);
     }
 }
 

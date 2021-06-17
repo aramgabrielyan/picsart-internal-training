@@ -2,32 +2,35 @@ package pageobjects;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import static setup.DriverSetup.getDriver;
+public class ImageBrowserPage extends BasePage<ImageBrowserPage> {
 
-public class ImageBrowserPage extends BasePage {
+    private String imageId;
 
     @FindBy(css = "[href='/hashtag/hashtag_changed']")
     private WebElement hashtag;
 
 
-    public void open() {
-        open(getUrl());
+    public ImageBrowserPage(String imageId) {
+        this.imageId = imageId;
     }
 
-    public ImageBrowserPage(String imageId) {
-        open(BasePage.BASE_URL + "/i/" + imageId);
-        PageFactory.initElements(getDriver(), this);
+    @Override
+    public ImageBrowserPage open() {
+        return openPage();
+    }
+
+    @Override
+    public ImageBrowserPage init() {
+        return initPage();
     }
 
     @Override
     public String getUrl() {
-        return null;
+        return "/i/" + imageId;
     }
 
     public boolean isHashtagChanged() {
         return isDisplayed(hashtag);
     }
-
 }

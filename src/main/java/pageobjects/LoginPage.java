@@ -1,13 +1,10 @@
 package pageobjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import static setup.DriverSetup.getDriver;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends BasePage<LoginPage> {
 
     @FindBy (name = "username")
     private WebElement usernameField;
@@ -24,14 +21,19 @@ public class LoginPage extends BasePage {
 
     //[class*='pa-uiLib-modal-modalContent']
 
-    public LoginPage(WebDriver driver){
-        open("https://picsart.com");
-        PageFactory.initElements(getDriver(), this);
+    @Override
+    public LoginPage open() {
+        return openPage();
     }
 
     public LoginPage init(){
-        PageFactory.initElements(getDriver(), this);
-        return this;
+        return initPage();
+    }
+
+    @Override
+    public String getUrl() {
+        return "";
+
     }
 
 
@@ -60,11 +62,5 @@ public class LoginPage extends BasePage {
     }
     public boolean isPopUpDisplayed(){
         return loginPopUp.isDisplayed();
-    }
-
-    @Override
-    public String getUrl() {
-        return BasePage.BASE_URL;
-
     }
 }

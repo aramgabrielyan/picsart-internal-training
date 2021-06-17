@@ -26,14 +26,15 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <installationDirectory>src/test/resources</installationDirectory>
+                    <installationDirectory>src/main/resources</installationDirectory>
                     <drivers>
                         <driver>
-                            <name>geckodriver</name>
+                            <name>chromedriver</name>
                             <platform>mac</platform>
                             <bit>64</bit>
-                            <customFileName>geckodriver</customFileName>
-                            <version>0.29.1</version>
+                            <customFileName>chromedriver</customFileName>
+                            <version>91.0.4472.101</version>
+                            <url>https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_mac64_m1.zip</url>
                         </driver>
                     </drivers>
                 </configuration>
